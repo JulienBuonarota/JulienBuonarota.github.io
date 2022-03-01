@@ -21,3 +21,4 @@
 		transform: none;
 		opacity: 1;
 	}
+	pre.src-latex:before { content: 'LaTeX'; }
