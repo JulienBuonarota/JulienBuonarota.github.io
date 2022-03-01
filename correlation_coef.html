@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Julien B. Data Analyst</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+				<header id="header" class="alt">
+					<a href="index.html" class="logo"><strong>Julien Buonarota</strong> <span>Data Analyst</span></a>
+
+					<ul class="icons">
+						<li><a href="https://github.com/JulienBuonarota" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/julien-buonarota-b2a85048/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about_me.html">About me</a></li>
+						<li><a href="correlation_coef.html">Correlation coeffecients</a></li>
+					</ul>
+				</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Correlation coefficients explained</h1>
+							</header>
+							<div class="content">
+								<p>How to calculate a correlation coefficient for unlinearly correlated data.</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="Introduction">
+								<div class="inner">
+									<header class="major">
+										<h2>Introduction</h2>
+									</header>
+									<p>In this article about correlation coefficient I explain two different ways to calculate correlation coefficients
+										between two variables, the limitation of this coefficients and the impact of noise in the data. I then apply this methods
+									on a real coffee tasting data set and thus show how to quickly find correlation in a set containing many variables.</p>
+								</div>
+							</section>
+						<!-- Correlation coefficients -->
+							<section id="Correlation coefficients">
+								<div class="inner">
+									<header class="major">
+										<h2>Correlation coefficients</h2>
+									</header>
+									<p>
+										A correlation coefficient measure the strength with which two
+										variables are correlated. Such coefficients follow the conditions:
+										</p>
+										<ol class="org-ol">
+										<li>A value of zero indicates the abscence of correlation</li>
+										<li>Increasing magnitude implies increasing strength of correlation</li>
+										<li>The maximum magnitude which a correlation may take is one.</li>
+										</ol>
+										
+										<p>
+										There is two main ways to calculate such a coefficient. The Pearson
+										product-moment correlation coefficient is effective in measuring
+										correlation between two linearly correlated variables and the Kendell
+										\(\tau\) correlation coefficient which is capable of measuring
+										correlation between two variables that are not necessarely linearly
+										correlated.
+										</p>
+										
+										<p>
+										In the following sections I explain how to calculate this two coeffcients.
+										</p>
+								</div>
+							</section>
+
+							<!-- Pearson product-moment correlation coefficient -->
+							<section id="Pearson product-moment correlation coefficient">
+								<div class="inner">
+									<header class="major">
+										<h2>Pearson product-moment correlation coefficient</h2>
+									</header>
+									<p>
+										The Pearsonc product-moment correlation coefficient \(r\) is calculated
+										for two variables \(x\) and \(y\) with the equation:
+										</p>
+										
+										\begin{equation}
+										r = \frac{s_{xy}}{s_x s_y}
+										\end{equation}
+										
+										<p>
+										where \(s_x\) and \(s_y\) are the sample standard deviations for variables
+										\(x\) and \(y\), and \(s_{xy}\) is the sample covariance and is defined by:
+										</p>
+										
+										
+										\begin{equation}
+										s_{xy} = \sum^n_{i=1} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n - 1}
+										\end{equation}
+								</div>
+							</section>
+
+							<!-- Kendell \(\tau\) correlation coefficient -->
+							<section id="Kendell \(\tau\) correlation coefficient">
+								<div class="inner">
+									<header class="major">
+										<h2>Kendell \(\tau\) correlation coefficient</h2>
+									</header>
+									<p>
+										The Kendll \(\tau\) correlation coefficient do not require the data to be linearly
+										correlated. It is based on the the assumption that correlated value will in
+										average have the same trend and it is calculated by following this 3 steps.
+										</p>
+										
+										<p>
+										Considering a data set of N paired values, \((x_1, y_1)...(x_N, y_N)\):
+										</p>
+										<ol class="org-ol">
+										<li>Order the values of variable \(x\) from smallest to largest while
+										keeping the paired \((x,y)\) values together. The newly ordered set will be denoted \((x_i', y_i')\)</li>
+										<li>Then, for each \(x_i'\), two number will be computed.
+										\(u_i\) which is the total number of values in \(\{y_{i+1}',... y_N'\}\) greater than \(y_i\).
+										\(d_i\) which is the total number of values in \(\{y_{i+1}',... y_N'\}\) lower than \(y_i\).</li>
+										<li>Compute the value of the correlation coefficient \(t_{\tau}\)
+										</li>
+										</ol>
+										\begin{equation}
+										t_{\tau} = \frac{ \sum^{n-1}_{i=1} (u_i - d_i) }{ \frac{1}{2}n(n-1)}
+										\end{equation}
+
+										<p>
+										The coefficient \(t_{\tau}\) can be seen as the average of the
+										difference \((u_i - d_i)\). Thus, if \(x\) and \(y\) are positively
+										correlated, \(u_i\) will in average be greater than \(d_i\) and hence
+										\(t_{\tau}\) will positive and closer to \(1\) the stronger the
+										correlation is. With the same logic, in case of a negative
+										correlation, \(t_{\tau}\) will be negative and closer to \(-1\) the
+										stronger the correlation is . This behavior is what is expected from a
+										correlation coefficient as explain previously.
+								</div>
+							</section>
+
+
+						<!-- Data correlation coefficient without noise -->
+							<section id="Data correlation coefficient without noise" class="spotlights">
+								<section>
+										<img src="images/data_correlation_without_noise.png" alt="" data-position="center center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Data correlation coefficient without noise</h3>
+											</header>
+											<p>With this set we can clearly see the difference between
+												the Pearson and the Kendell coefficients. While both coefficients
+												detect a strong correlation for the linearly correlated pair (in blue), only the
+												Kendell coefficient succesfully sees it in the second pair (in orange) which is not linearly correlated.</p>
+										</div>
+									</div>
+								</section>
+						<!-- Data correlation coefficient with noise -->
+								<section>
+										<img src="images/data_correlation_with_noise.png" alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Data correlation in the presence of noise</h3>
+											</header>
+											<p>Here, in presence of noise, the Kendell coefficient perform
+												pourly, with a value of 0.9 and 0.6 in comparison the Pearson
+												coefficient with values of 0.98 and 0.66. So, even if the Kendell
+												coefficient is able to detect correlation between two variables that
+												are not linearly correlated it can only do so in the abscence of noise in the data.</p>
+										</div>
+									</div>
+								</section>
+							</div>
+				<!-- Contact -->
+				<section id="contact">
+					<div class="inner">
+						<!-- <section class="split"> -->
+							<section>
+								<div class="contact-method">
+									<span class="icon solid alt fa-envelope"></span>
+									<h3>Email</h3>
+									<a>julien.buonarota@gmail.com</a>
+									
+								</div>
+							</section>
+							<section>
+								<div style="display:block; padding: 3cm;">
+									<ul class="icons" >
+										<li><a href="https://github.com/JulienBuonarota" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/julien-buonarota-b2a85048/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</div>
+							</section>
+						<!-- </section> -->
+					</div>
+				</section>
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
