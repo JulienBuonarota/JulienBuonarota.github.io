@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script type="text/javascript" id="MathJax-script" async
-  		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 		</script>
 	</head>
 	<body class="is-preload">
@@ -68,9 +68,9 @@
 									<header class="major">
 										<h2>Introduction</h2>
 									</header>
-									<p>In this article about correlation coefficient I explain two different ways to calculate correlation coefficients
+									<p>In this article about correlation coefficients I explain two different ways to calculate correlation coefficients
 										between two variables, the limitation of this coefficients and the impact of noise in the data. I then apply this methods
-									on a real coffee tasting data set and thus show how to quickly find correlation in a set containing many variables.</p>
+									on a real coffee tasting data set and thus show how to quickly find correlations in a set containing many variables.</p>
 								</div>
 							</section>
 						<!-- Correlation coefficients -->
@@ -81,7 +81,7 @@
 									</header>
 									<p>
 										A correlation coefficient measure the strength with which two
-										variables are correlated. Such coefficients follow the conditions:
+										variables are correlated. Such coefficient follow the conditions:
 										</p>
 										<ol class="org-ol">
 										<li>A value of zero indicates the abscence of correlation</li>
@@ -90,11 +90,11 @@
 										</ol>
 										
 										<p>
-										There is two main ways to calculate such a coefficient. The Pearson
-										product-moment correlation coefficient is effective in measuring
-										correlation between two linearly correlated variables and the Kendell
-										\(\tau\) correlation coefficient which is capable of measuring
-										correlation between two variables that are not necessarely linearly
+										There is two main ways to calculate such a coefficient. The <i>Pearson
+										product-moment correlation coefficient</i> is effective in measuring
+										correlation between two linearly correlated variables and the <i>Kendell
+										\(\tau\) correlation coefficient</i> which is capable of measuring
+										correlation between two variables that are not necessarily linearly
 										correlated.
 										</p>
 										
@@ -150,9 +150,12 @@
 										<li>Order the values of variable \(x\) from smallest to largest while
 										keeping the paired \((x,y)\) values together. The newly ordered set will be denoted \((x_i', y_i')\)</li>
 										<li>Then, for each \(x_i'\), two number will be computed.
-										\(u_i\) which is the total number of values in \(\{y_{i+1}',... y_N'\}\) greater than \(y_i\).
-										\(d_i\) which is the total number of values in \(\{y_{i+1}',... y_N'\}\) lower than \(y_i\).</li>
-										<li>Compute the value of the correlation coefficient \(t_{\tau}\)
+											<ul type="circle">
+												<li>\(u_i\) which is the total number of values in \(\{y_{i+1}',... y_N'\}\) greater than \(y_i\).</li>
+												<li>\(d_i\) which is the total number of values in \(\{y_{i+1}',... y_N'\}\) lower than \(y_i\).</li>
+											</ul>
+										</li>
+										<li>Compute the value of the correlation coefficient \(t_{\tau}\):
 										</li>
 										</ol>
 										\begin{equation}
@@ -175,7 +178,9 @@
 						<!-- Data correlation coefficient without noise -->
 							<section id="Data correlation coefficient without noise" class="spotlights">
 								<section>
+									<a class="image">
 										<img src="images/data_correlation_without_noise.png" alt="" data-position="center center" />
+									</a>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
@@ -188,23 +193,29 @@
 										</div>
 									</div>
 								</section>
+							
 						<!-- Data correlation coefficient with noise -->
 								<section>
+									<a class="image">
 										<img src="images/data_correlation_with_noise.png" alt="" data-position="top center" />
+									</a>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
 												<h3>Data correlation in the presence of noise</h3>
 											</header>
 											<p>Here, in presence of noise, the Kendell coefficient perform
-												pourly, with a value of 0.9 and 0.6 in comparison the Pearson
-												coefficient with values of 0.98 and 0.66. So, even if the Kendell
+												pourly, with a value of 0.9 and 0.6, while the Pearson
+												coefficient gives values of 0.98 and 0.66. So, even if the Kendell
 												coefficient is able to detect correlation between two variables that
-												are not linearly correlated it can only do so in the abscence of noise in the data.</p>
+												are not linearly correlated it can only do so in the abscence of noise in the data. In presence of
+											noise the Pearson coefficient is still capable of detecting a linear correlation which make it a more 
+										robust coefficient to use.</p>
 										</div>
 									</div>
 								</section>
-							</div>
+							</section>
+						</div>
 				<!-- Contact -->
 				<section id="contact">
 					<div class="inner">
